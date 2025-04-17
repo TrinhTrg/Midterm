@@ -1,37 +1,53 @@
 package com.midterm.truongtuyettrinh;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "notes")
 public class Note {
-        private String id;
-        private String title;
-        private String content;
-        private String date;
 
-        private String color;
+    @PrimaryKey(autoGenerate = true)
+    private int id;
 
-    public Note() {}
+    @ColumnInfo(name = "title")
+    private String title;
 
-    public Note(String id, String title, String content, String date, String color) {
+    @ColumnInfo(name = "content")
+    private String content;
 
+    @ColumnInfo(name = "date")
+    private String date;
+
+    // Optional: Nếu em muốn thêm màu thì giữ lại biến này và thêm @ColumnInfo nếu cần
+//    @ColumnInfo(name = "color")
+//    private String color;
+
+    public Note() {
+    }
+
+    public Note(int id, String title, String content, String date) {
+        this.id = id;
         this.title = title;
         this.content = content;
         this.date = date;
-        this.color = color;
     }
 
-    public Note(String title, String content, String date, String color) {
+    public Note(String title, String content, String date) {
         this.title = title;
         this.content = content;
         this.date = date;
-        this.color = color;
     }
 
-
-    public String getId() {
+    // Getters và Setters
+    public int getId() {
         return id;
     }
-    public void setId(String id) {
+
+    public void setId(int id) {
         this.id = id;
     }
+
     public String getTitle() {
         return title;
     }
@@ -55,10 +71,12 @@ public class Note {
     public void setDate(String date) {
         this.date = date;
     }
-    public String getColor() {
-        return color;
-    }
-    public void setColor(String color) {
-        this.color = color;
-    }
+
+//    public String getColor() {
+//        return color;
+//    }
+//
+//    public void setColor(String color) {
+//        this.color = color;
+//    }
 }
